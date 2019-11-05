@@ -18,6 +18,12 @@
           <li class="nav-item">
             <a href="{{route('pages.test')}}" class="nav-link">Test</a>
           </li>
+          <li class="nav-item">
+            <a href="#" onclick="addToHomeScreen()" class="nav-link">
+              <span class="uk-margin-small-right" data-uk-icon="icon: plus"></span>
+              Add to Home Screen
+            </a>
+          </li>
         </ul>
 
         <ul class="navbar-nav ml-auto">
