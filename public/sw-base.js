@@ -19,9 +19,9 @@ workbox.routing.registerRoute(
 
 // cache google fonts
 workbox.routing.registerRoute(
-        new RegExp("https://fonts.(?:googleapis|gstatic).com/(.*)"),
+        new RegExp('https://fonts.(?:googleapis|gstatic).com/(.*)'),
         new workbox.strategies.CacheFirst({
-            cacheName: "google-fonts",
+            cacheName: 'google-fonts',
             plugins: [
                 new workbox.cacheableResponse.Plugin({
                     statuses: [0, 200],
@@ -29,6 +29,17 @@ workbox.routing.registerRoute(
             ],
         })
     );
+
+		workbox.routing.registerRoute(
+		  new RegExp('/todos/'),
+		  workbox.strategies.networkFirst({
+		    cacheName: 'todos',
+		    plugins: [
+		      new workbox.expiration.Plugin({
+		        maxEntries: 50
+		      })
+		    ]
+		}));
 
 workbox.precaching.precacheAndRoute([]);
 
