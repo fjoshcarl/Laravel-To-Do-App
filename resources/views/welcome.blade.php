@@ -3,8 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="manifest" href="/manifest.json" />
 
-        <title>Laravel</title>
+        <title>First Laravel Project</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -96,5 +97,16 @@
                 </div>
             </div>
         </div>
+
+        <script>
+        // Check that service workers are supported
+        if ('serviceWorker' in navigator) {
+        // Use the window load event to keep the page load performant
+          window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/service-worker.js');
+          });
+        }
+        </script>
+
     </body>
 </html>
