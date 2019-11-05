@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
+    <link rel="manifest" href="/manifest.json" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <title>@yield('title','Laravel 5.8 Basics')</title>
     <style>
@@ -53,7 +53,15 @@
         }, 3000);
       });
 
-
+      // Check that service workers are supported
+      if ('serviceWorker' in navigator) {
+      // Use the window load event to keep the page load performant
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js').then( () => {
+            console.log('Service Worker Registered');
+          });
+        });
+      }
 
     </script>
 </body>
