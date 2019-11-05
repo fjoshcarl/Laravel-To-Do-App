@@ -25,15 +25,33 @@
       <td>{{$todo->created_at->diffForHumans()}}</td>
       <td>
         <a href="{{route('todos.edit',$todo->id)}}" class="btn btn-primary">Update</a>
+        <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#deletemodal{{$todo->id}}">Delete</a>
 
-        <form method="POST" id="delete-form" action="todos/{{$todo->id}}">
+        <div class="clearfix"></div>
+        <div class="modal fade" id="deletemodal{{$todo->id}}">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Delete Todo</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Are you sure!</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" onclick="document.querySelector('#delete-form{{$todo->id}}').submit()">Proceed</button>
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <form method="POST" id="delete-form{{$todo->id}}" action="todos/{{$todo->id}}">
           @csrf
           @method('DELETE')
-          <button type="submit" class="btn btn-danger mt-2" onclick="return alert('Are you sure you want to delete the item?')">Delete</a>
         </form>
-
-
-
 
       </td>
     </tr>

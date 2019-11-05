@@ -115,7 +115,7 @@ class TodosController extends Controller
         $todo->user_id = Auth::id();
         $todo->save();
         return redirect()
-            ->route('todos.show')
+            ->route('todos.show', $id)
             ->with('status','Updated a new Todo!');
     }
 
