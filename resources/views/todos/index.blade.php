@@ -38,7 +38,7 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <p>Are you sure!</p>
+                  <p>Are you sure?</p>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-danger" onclick="document.querySelector('#delete-form{{$todo->id}}').submit()">Proceed</button>
